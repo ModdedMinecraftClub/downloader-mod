@@ -1,0 +1,16 @@
+[
+{
+  "modid": "downloadermod",
+  "name": "Modded Minecraft Club's Downloader Mod",
+  "description": "Downloads mods from a 3rd party server before launch.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["john01dav"],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
