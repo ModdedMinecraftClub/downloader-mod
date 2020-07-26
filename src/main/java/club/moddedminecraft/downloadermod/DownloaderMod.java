@@ -39,11 +39,17 @@ public final class DownloaderMod{
         ){
             ArrayList<ModToDownload> modToDownloadArrayList = new ArrayList<>();
 
+            int lineNumber = 1;
             String line;
             while((line = bufferedReader.readLine()) != null){
-                String url = line.substring(0, line.indexOf(";"));
-                String path = line.substring(url.length()+1);
-                modToDownloadArrayList.add(new ModToDownload(new URL(url), new File(path)));
+                try{
+                    String url = line.substring(0, line.indexOf(";"));
+                    String path = line.substring(url.length() + 1);
+                    modToDownloadArrayList.add(new ModToDownload(new URL(url), new File(path)));
+                }catch(Throwable t){
+                    throw new ParseException("Failed to parse line " + lineNumber + " with contents \"" + line + "\".", t);
+                }
+                ++lineNumber;
             }
             return modToDownloadArrayList;
         }catch(IOException e){

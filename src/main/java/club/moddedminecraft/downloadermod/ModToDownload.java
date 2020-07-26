@@ -22,6 +22,13 @@ final class ModToDownload{
             return false;
         }else{
             System.out.println("Downloading mod " + url + " to " + targetPath + ".");
+
+            if(!targetPath.getParentFile().exists()){
+                if(!targetPath.getParentFile().mkdirs()){
+                    throw new RuntimeException("Failed to create directory and/or its parents: " + targetPath.getParentFile() + ".");
+                }
+            }
+
             try{
                 URLConnection connection = url.openConnection();
                 try(
